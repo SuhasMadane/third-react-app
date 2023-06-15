@@ -3,18 +3,18 @@ function App() {
     <>
       <h1>Hello World</h1>
       <MessageDemo name="Suhas" email="suhasmadane81@gmail.com" />
-      <MessageDemo name="Tejas" />
+      <MessageDemo name="Tejas" id="107" />
       <MessageDemo name="Suraj" email="suraj3@gmail.com" />
-      <MessageDemo name="Vaibhav" />
+      <MessageDemo name="Vaibhav" id="108" />
     </>
   );
 }
 export default App;
-
-function MessageDemo(props) {
+//destructring
+function MessageDemo({ id }) {
   return (
     <>
-      <h1>HeLLLo {props.email}</h1>
+      <h1>HeLLLo {id}</h1>
     </>
   );
 }
