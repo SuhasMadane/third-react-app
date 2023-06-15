@@ -11,10 +11,10 @@ function App() {
 }
 export default App;
 //destructring
-function MessageDemo({ name, id }) {
+function MessageDemo({ email, id }) {
   return (
     <>
-      <h1>HeLLLo {name}</h1>
+      <h1>HeLLLo {id}</h1>
     </>
   );
 }
