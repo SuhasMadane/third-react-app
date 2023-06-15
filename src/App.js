@@ -10,5 +10,14 @@ export default App;
 //destructring
 function ListDemo() {
   let list = ["Satara", "Navi Mumbai", "Nashik", "Chandrapur"];
-  return <>{list.map((item) => item)};</>;
+  return (
+    <>
+      {list.map((item) => (
+        <>
+          <h1>{item}</h1>
+        </>
+      ))}
+      ;
+    </>
+  );
 }
