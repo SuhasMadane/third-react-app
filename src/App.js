@@ -9,12 +9,14 @@ function App() {
 export default App;
 //destructring
 function ListDemo() {
-  let list = ["Satara", "Navi Mumbai", "Nashik", "Chandrapur"];
+  let data = "Hello World";
+  let list = ["", "", "", ""];
+
   return (
     <>
       {list.map((item) => (
         <>
-          <h1>{item}</h1>
+          <h1>{data}</h1>
         </>
       ))}
       ;
