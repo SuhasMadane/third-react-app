@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function App() {
   return (
     <>
@@ -9,17 +11,27 @@ function App() {
 export default App;
 //destructring
 function ListDemo() {
-  let data = "Hello World";
-  let list = ["", "", "", ""];
+  let [list, setList] = useState([
+    "Satara",
+    "Navi Mumbai",
+    "Nashik",
+    "Chandrapur",
+  ]);
+  let addCity = () => {
+    let newList = [...list, "Delhi", "Beed"];
+    console.log(newList);
+    setList(newList);
+  };
 
   return (
     <>
+      <input type="button" value="AddNewCity" onClick={addCity} />
+
       {list.map((item) => (
         <>
-          <h1>{data}</h1>
+          <h1>Hello {item}</h1>
         </>
       ))}
-      ;
     </>
   );
 }
