@@ -1,53 +1,65 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 function App() {
   return (
     <>
-      <ListDemo />
+      <LoginApp />
     </>
   );
 }
+
 export default App;
-//destructring
-function ListDemo() {
-  let inputref = useRef();
-  let [list, setList] = useState([]);
-  let addCity = () => {
-    let inputvalue = inputref.current.value;
-    let newList = [...list, inputvalue];
-    console.log(newList);
-    setList(newList);
-    inputref.current.value = "";
+
+function LoginApp() {
+  let [checkbox, setcheckbox] = useState(false);
+  let [user, setUser] = useState({ username: "", pass: "" });
+  let handleChangeUserName = (e) => {
+    let newUser = { ...user, username: e.target.value };
+    setUser(newUser);
   };
-
+  let handleChangePass = (e) => {
+    let newUser = { ...user, pass: e.target.value };
+    setUser(newUser);
+  };
+  let addUser = () => {
+    console.log(user);
+    let uri = `http://localhost:4000/addrecord?username=${user.username}&pass=${user.pass}`;
+    fetch(uri);
+    let newUser = { username: "", pass: "" };
+    setUser(newUser);
+    setcheckbox(true);
+    setTimeout(() => {
+      setcheckbox(false);
+    }, 5000);
+  };
   return (
-    <>
-      <input type="text" className="form-control" ref={inputref} />
-      <input type="button" value="AddNewCity" onClick={addCity} />
-
-      {list.map((item) => (
-        <>
-          <Message p1={item} />
-        </>
-      ))}
-    </>
-  );
-}
-
-function Message({ p1 }) {
-  return (
-    <>
-      <h1>Hello {p1}</h1>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni deserunt
-        incidunt qui placeat. Architecto beatae consectetur magni aspernatur
-        velit veritatis soluta a, nihil similique? Eos vel quo iste recusandae
-        obcaecati.
-      </p>
-      <div>
-        <input type="button" value="&#128077;" />
-        <input type="button" value="&#128078;" />
+    <div className="min-vh-100 min-vw-100 bg-primary-subtle d-flex justify-content-center align-items-center">
+      <div
+        className="bg-warning-subtle"
+        style={{ height: "300px", width: "400px" }}
+      >
+        <h1 className="d-flex justify-content-center">Login App</h1>
+        <input
+          type="text"
+          className="email form-control"
+          placeholder="Enter Username or email"
+          value={user.username}
+          onChange={handleChangeUserName}
+        />
+        <input
+          type="text"
+          className="password form-control mt-2"
+          placeholder="Enter password"
+          value={user.pass}
+          onChange={handleChangePass}
+        />
+        <h1 className="d-flex justify-content-center mt-3">
+          <input type="button" value="Login" onClick={addUser} />
+        </h1>
+        {checkbox && (
+          <div className="alert alert-success">Login Successfully</div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
