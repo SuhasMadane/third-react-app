@@ -11,12 +11,7 @@ export default App;
 //destructring
 function ListDemo() {
   let inputref = useRef();
-  let [list, setList] = useState([
-    "Satara",
-    "Navi Mumbai",
-    "Nashik",
-    "Chandrapur",
-  ]);
+  let [list, setList] = useState([]);
   let addCity = () => {
     let inputvalue = inputref.current.value;
     let newList = [...list, inputvalue];
@@ -33,6 +28,16 @@ function ListDemo() {
       {list.map((item) => (
         <>
           <h1>Hello {item}</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
+            deserunt incidunt qui placeat. Architecto beatae consectetur magni
+            aspernatur velit veritatis soluta a, nihil similique? Eos vel quo
+            iste recusandae obcaecati.
+          </p>
+          <div>
+            <input type="button" value="&#128077;" />
+            <input type="button" value="&#128078;" />
+          </div>
         </>
       ))}
     </>
