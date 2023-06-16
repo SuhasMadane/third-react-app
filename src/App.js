@@ -6,12 +6,13 @@ import Home from "./pages/Home";
 import { BrowserRouter, Link, NavLink, Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import NavigationLinks from "./pages/Navigationlinks";
+import NavigationButtons from "./pages/Navigationbuttons";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavigationLinks />
+        <NavigationButtons />
         <Routes>
           <Route path="/Home" element={<Home />} />
           <Route path="/login" element={<Login />} />
