@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
       <ListDemo />
     </>
   );
@@ -11,6 +10,7 @@ function App() {
 export default App;
 //destructring
 function ListDemo() {
+  let inputref = useRef();
   let [list, setList] = useState([
     "Satara",
     "Navi Mumbai",
@@ -18,13 +18,16 @@ function ListDemo() {
     "Chandrapur",
   ]);
   let addCity = () => {
-    let newList = [...list, "Delhi", "Beed"];
+    let inputvalue = inputref.current.value;
+    let newList = [...list, inputvalue];
     console.log(newList);
     setList(newList);
+    inputref.current.value = "";
   };
 
   return (
     <>
+      <input type="text" className="form-control" ref={inputref} />
       <input type="button" value="AddNewCity" onClick={addCity} />
 
       {list.map((item) => (
