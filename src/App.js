@@ -27,19 +27,27 @@ function ListDemo() {
 
       {list.map((item) => (
         <>
-          <h1>Hello {item}</h1>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni
-            deserunt incidunt qui placeat. Architecto beatae consectetur magni
-            aspernatur velit veritatis soluta a, nihil similique? Eos vel quo
-            iste recusandae obcaecati.
-          </p>
-          <div>
-            <input type="button" value="&#128077;" />
-            <input type="button" value="&#128078;" />
-          </div>
+          <Message p1={item} />
         </>
       ))}
+    </>
+  );
+}
+
+function Message({ p1 }) {
+  return (
+    <>
+      <h1>Hello {p1}</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni deserunt
+        incidunt qui placeat. Architecto beatae consectetur magni aspernatur
+        velit veritatis soluta a, nihil similique? Eos vel quo iste recusandae
+        obcaecati.
+      </p>
+      <div>
+        <input type="button" value="&#128077;" />
+        <input type="button" value="&#128078;" />
+      </div>
     </>
   );
 }
